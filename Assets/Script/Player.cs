@@ -5,19 +5,15 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 using System.Runtime.CompilerServices;
+using UnityEngine.UIElements;
 
 public class Player : MonoBehaviour
 {
-    private Camera cam = null;
-    private Vector2 startTouchPosition = Vector2.zero;
     private bool isDragging = false;
     [SerializeField] private GameObject player = null;
-    [SerializeField] private float moveSpeed = 0f;
-
-    private void Start()
-    {
-        cam = GameManager.Instance.mainCam;
-    }
+    [SerializeField] private Transform center = null;
+    [SerializeField] private float rotateSpeed;
+    private float speed;
 
     void Update()
     {
@@ -28,7 +24,6 @@ public class Player : MonoBehaviour
 
             if (touchPhase == TouchPhase.Began)
             {
-                startTouchPosition = touch.position;
                 isDragging = true;
             }
             else if (touchPhase == TouchPhase.Ended || touchPhase == TouchPhase.Canceled)
@@ -36,58 +31,44 @@ public class Player : MonoBehaviour
                 isDragging = false;
             }
 
-            transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
+            center.transform.Rotate(new Vector3(0, 0, speed * Time.deltaTime * 100f));
 
             if (isDragging)
             {
-                if (touch.position.x >= startTouchPosition.x) 
+                if (touch.position.x > Screen.width / 2)
                 {
-                    moveSpeed = 5f;
-                    TurnRight(Mathf.Abs(startTouchPosition.x - touch.position.x));
+                    TurnRight();
+                    speed = rotateSpeed;
                 }
                 else 
                 {
-                    moveSpeed = -5f;
-                    TurnLeft(Mathf.Abs(startTouchPosition.x - touch.position.x));
+                    TurnLeft();
+                    speed = -rotateSpeed;
                 }
             }
         }
         else if (Input.touchCount == 2)
         {
+            player.transform.DORotate(new Vector3(0, 0, 0), 1);
             Booster();
-
         }
         else
-        {
+        { 
             player.transform.DORotate(new Vector3(0, 0, 0), 1);
-            moveSpeed = 0f;
+            speed = 0;
             isDragging = false;
         }
     }
 
-    private void TurnRight(float distance)
-    {
-        if(distance >= 200)
-        {
-            player.transform.DORotate(new Vector3(0, 0, -40f), 1);
-        }
-        else
-        {
 
-            player.transform.DORotate(new Vector3(0, 0, -20f), 1);
-        }
+    private void TurnRight()
+    {
+        player.transform.DORotate(new Vector3(0, 0, -40f), 1);
     }
 
-    private void TurnLeft(float distance)
+    private void TurnLeft()
     {
-        if (distance >= 200)
-        {
-            player.transform.DORotate(new Vector3(0, 0, 40f), 1);
-        }
-        else
-        {
-            player.transform.DORotate(new Vector3(0, 0, 20f), 1);
-        }
+        player.transform.DORotate(new Vector3(0, 0, 40f), 1);
     }
 
     private void Booster()
