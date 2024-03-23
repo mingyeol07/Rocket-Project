@@ -1,12 +1,22 @@
 using UnityEngine;
 using DG.Tweening;
+using System.Collections;
+using System.Runtime.CompilerServices;
 
 public class Player : MonoBehaviour
 {
-    private bool isDragging = false;
+    [Header("Object")]
     [SerializeField] private GameObject player = null;
     [SerializeField] private Transform center = null;
-    [SerializeField] private float rotateSpeed;
+
+    [Header("Bool")]
+    private bool isDragging = false;
+    private bool isBoost = false;
+
+    [Header("Float")]
+    [SerializeField] private float rotateSpeed = 1f;
+    [SerializeField] private float rotateSize = 40f;
+    [SerializeField] private float warmUpTime = 1f;
     private float speed;
 
     void Update()
@@ -44,44 +54,60 @@ public class Player : MonoBehaviour
         }
         else if (Input.touchCount == 2)
         {
-            player.transform.DORotate(new Vector3(0, 0, 0), 1);
-            Booster(true);
+            player.transform.DORotate(Vector3.zero, rotateSpeed);
+            if (isBoost == false) {
+                isBoost = true;
+                StartCoroutine(StartBoost());
+            }
         }
         else
         { 
-            player.transform.DORotate(new Vector3(0, 0, 0), 1);
+            player.transform.DORotate(Vector3.zero, rotateSpeed);
             speed = 0;
             isDragging = false;
             Booster(false);
         }
     }
 
-
     private void TurnRight()
     {
-        player.transform.DORotate(new Vector3(0, 0, -40f), 1);
+        player.transform.DORotate(new Vector3(0, 0, -rotateSize), 1);
     }
 
     private void TurnLeft()
     {
-        player.transform.DORotate(new Vector3(0, 0, 40f), 1);
+        player.transform.DORotate(new Vector3(0, 0, rotateSize), 1);
+    }
+
+    private IEnumerator StartBoost()
+    {
+        float warmUpTimer = warmUpTime;
+        float timer = 0f;
+
+        while (Input.touchCount == 2 && timer < warmUpTimer)
+        {
+            timer += Time.unscaledDeltaTime;
+            yield return null;
+        }
+
+        if (timer >= warmUpTime)
+        {
+            Booster(true);
+        }
     }
 
     private void Booster(bool isBooster)
     {
-        GameManager.Instance.boosting = isBooster;
+        isBoost = isBooster;
+        GameManager.instance.boosting = isBoost;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.CompareTag("Obstacle"))
+        if (other.gameObject.CompareTag("Obstacle") && !isBoost)
         {
-            GameOver();
+            GameManager.instance.StartCoroutine("GameOver");
+            gameObject.SetActive(false);
         }
-    }
-
-    private void GameOver()
-    {
-
     }
 }

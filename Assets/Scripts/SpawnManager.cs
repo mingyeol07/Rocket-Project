@@ -6,7 +6,6 @@ public class SpawnManager : MonoBehaviour
 {
     [SerializeField] private Transform[] spawnPoint = null; // new Transform[8]
     [SerializeField] private GameObject[] Obstacles;
-    [SerializeField] private float obstacleSpeed = 40f;
 
     private void Start()
     {
