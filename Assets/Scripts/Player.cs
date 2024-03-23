@@ -1,11 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UI;
 using DG.Tweening;
-using System.Runtime.CompilerServices;
-using UnityEngine.UIElements;
 
 public class Player : MonoBehaviour
 {
@@ -17,8 +11,9 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        if (Input.touchCount == 1) // 화면에 터치가 하나만 있는 경우
+        if (Input.touchCount == 1)
         {
+            Booster(false);
             Touch touch = Input.GetTouch(0);
             TouchPhase touchPhase = touch.phase;
 
@@ -50,13 +45,14 @@ public class Player : MonoBehaviour
         else if (Input.touchCount == 2)
         {
             player.transform.DORotate(new Vector3(0, 0, 0), 1);
-            Booster();
+            Booster(true);
         }
         else
         { 
             player.transform.DORotate(new Vector3(0, 0, 0), 1);
             speed = 0;
             isDragging = false;
+            Booster(false);
         }
     }
 
@@ -71,9 +67,9 @@ public class Player : MonoBehaviour
         player.transform.DORotate(new Vector3(0, 0, 40f), 1);
     }
 
-    private void Booster()
+    private void Booster(bool isBooster)
     {
-
+        GameManager.Instance.boosting = isBooster;
     }
 
     private void OnTriggerEnter(Collider other)

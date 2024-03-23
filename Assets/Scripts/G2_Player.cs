@@ -25,7 +25,7 @@ public class G2_Player : MonoBehaviour
                 isDragging = false;
             }
 
-            transform.Rotate(new Vector3(0, speed * Time.deltaTime * 100f, 0));
+            transform.Rotate(new Vector3(0, 0, speed * Time.deltaTime * 100f));
 
             if (isDragging)
             {
