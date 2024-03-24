@@ -9,7 +9,7 @@ public class SpawnManager : MonoBehaviour
 
     private void Start()
     {
-        InvokeRepeating("RandomSpawn", 0f, 0.25f);
+        InvokeRepeating("RandomSpawn", 0f, 0.1f);
     }
 
     public void RandomSpawn()

@@ -4,16 +4,17 @@ using UnityEngine;
 
 public class Obstacle : MonoBehaviour
 {
-    [SerializeField] private float speed;
-    private float boostSpeed;
+    [SerializeField] private float minSpeed;
+    private float speed;
 
     private void Start()
     {
-        boostSpeed = speed + 20f;
+        Destroy(gameObject, 10f);
     }
 
     private void Update()
     {
+        speed = Mathf.Clamp(speed, minSpeed, 100f);
         transform.position += -transform.forward * speed * Time.deltaTime;
     }
 }

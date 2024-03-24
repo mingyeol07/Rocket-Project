@@ -1,14 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+// 점수, 부활, 게임오버, 게임스타트, 게임시간
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public bool boosting;
     private bool isStop;
+    private bool isLife;
+    private bool isOver;
 
     [SerializeField] private TMP_Text txt_distance;
     [SerializeField] private GameObject player;
@@ -36,6 +40,7 @@ public class GameManager : MonoBehaviour
     {
         btn_stop.onClick.AddListener(() => Stop());
         btn_play.onClick.AddListener(() => Stop());
+        btn_life.onClick .AddListener(() => StartCoroutine("GetLife"));
         player.SetActive(true);
     }
 
@@ -45,7 +50,7 @@ public class GameManager : MonoBehaviour
         else if (boosting) Time.timeScale = 4f;
         else Time.timeScale = 1f;
 
-        if(!isStop) travelDistance += Time.deltaTime * 10;
+        if(!isStop && !isOver) travelDistance += Time.deltaTime * 10;
         txt_distance.text = ((int)travelDistance).ToString() + "km";
     }
 
@@ -70,6 +75,7 @@ public class GameManager : MonoBehaviour
     private IEnumerator ExitStop()
     {
         int time = 3;
+        txt_stopExit.gameObject.SetActive(true);
 
         while (time > 0)
         {
@@ -79,21 +85,40 @@ public class GameManager : MonoBehaviour
             time -= 1;
         }
 
+        txt_stopExit.gameObject.SetActive(false);
         btn_stop.gameObject.SetActive(true);
         isStop = false;
     }
 
     public IEnumerator GameOver()
     {
+        isOver = true;
         pnl_life.SetActive(true);
-        int time = 10;
+        float time = 10;
 
         while (time > 0)
         {
-            txt_lifeTime.text = time.ToString();
-            yield return new WaitForSecondsRealtime(1f);
-            time -= 1;
+            txt_lifeTime.text = Mathf.CeilToInt(time).ToString();
+            time -= Time.unscaledDeltaTime;
+
+            if (isLife == true) yield break;
+            else yield return null;
         }
+
+        isOver = false;
         pnl_life.SetActive(false);
+    }
+
+    private IEnumerator GetLife()
+    {
+        if (isOver)
+        {
+            isLife = true;
+            isOver = false;
+            pnl_life.SetActive(false);
+            player.SetActive(true);
+            
+            yield return null;
+        }
     }
 }
