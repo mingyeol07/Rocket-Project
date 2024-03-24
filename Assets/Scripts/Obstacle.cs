@@ -17,4 +17,10 @@ public class Obstacle : MonoBehaviour
         speed = Mathf.Clamp(speed, minSpeed, 100f);
         transform.position += -transform.forward * speed * Time.deltaTime;
     }
+
+    public void EscapeAnim()
+    {
+        float deg = Random.Range(0, 180);
+        transform.eulerAngles = new Vector3(deg, 90, 0);
+    }
 }

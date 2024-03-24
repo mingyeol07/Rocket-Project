@@ -104,10 +104,17 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Obstacle") && !isBoost)
+        if (other.gameObject.CompareTag("Obstacle") && !GameManager.instance.isLife)
         {
-            GameManager.instance.StartCoroutine("GameOver");
-            gameObject.SetActive(false);
+            if (!isBoost)
+            {
+                GameManager.instance.StartCoroutine("GameOver");
+                gameObject.SetActive(false);
+            }
+            else
+            {
+                other.GetComponent<Obstacle>().EscapeAnim();
+            }
         }
     }
 }

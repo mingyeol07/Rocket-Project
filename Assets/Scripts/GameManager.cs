@@ -1,7 +1,7 @@
+using DG.Tweening;
 using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
 using TMPro;
+using Unity.Android.Types;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,12 +11,13 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public bool boosting;
     private bool isStop;
-    private bool isLife;
+    public bool isLife; // 부활할건지 물어보는 중일때 true
     private bool isOver;
 
     [SerializeField] private TMP_Text txt_distance;
     [SerializeField] private GameObject player;
-    
+    [SerializeField] private Material playerMaterial;
+
     [Header("Stop")]
     [SerializeField] private TMP_Text txt_stopExit;
     [SerializeField] private Button btn_stop;
@@ -28,6 +29,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TMP_Text txt_lifeTime;
     [SerializeField] private Button btn_life;
     [SerializeField] private GameObject pnl_gameover;
+    private float lifeTime;
 
     private float travelDistance = 0;
 
@@ -47,7 +49,7 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         if (isStop) Time.timeScale = 0f;
-        else if (boosting) Time.timeScale = 4f;
+        else if (boosting) Time.timeScale = 2f;
         else Time.timeScale = 1f;
 
         if(!isStop && !isOver) travelDistance += Time.deltaTime * 10;
@@ -94,15 +96,15 @@ public class GameManager : MonoBehaviour
     {
         isOver = true;
         pnl_life.SetActive(true);
-        float time = 10;
+        lifeTime = 10;
 
-        while (time > 0)
+        while (lifeTime > 0)
         {
-            txt_lifeTime.text = Mathf.CeilToInt(time).ToString();
-            time -= Time.unscaledDeltaTime;
+            txt_lifeTime.text = Mathf.CeilToInt(lifeTime).ToString();
+            lifeTime -= Time.unscaledDeltaTime;
 
             if (isLife == true) yield break;
-            else yield return null;
+            yield return null;
         }
 
         isOver = false;
@@ -117,8 +119,46 @@ public class GameManager : MonoBehaviour
             isOver = false;
             pnl_life.SetActive(false);
             player.SetActive(true);
-            
-            yield return null;
+
+            float timer = 0f;
+            float time = 0f;
+            float changeSpeed = 3f;
+            Color color = playerMaterial.color;
+            bool change = false;
+
+            while (true)
+            {
+                if (change)
+                {
+                    timer -= 1;
+
+                    if (timer <= 0)
+                    {
+                        change = false;
+                    }
+                }
+                else
+                {
+                    timer += 1;
+
+                    if (timer >= changeSpeed)
+                    {
+                        change = true;
+                    }
+                }
+
+                playerMaterial.color = new Color(color.r, color.g, color.b, timer / changeSpeed);
+
+                yield return new WaitForSeconds(0.1f);
+                time += 0.1f;
+
+                if(time > 3)
+                {
+                    isLife = false;
+                    playerMaterial.color = new Color(color.r, color.g, color.b, 1);
+                    yield break;
+                }
+            }
         }
     }
 }

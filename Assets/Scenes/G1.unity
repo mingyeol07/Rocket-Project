@@ -153,8 +153,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boosting: 0
+  isLife: 0
   txt_distance: {fileID: 1676265262}
   player: {fileID: 822960117}
+  playerMaterial: {fileID: 2100000, guid: 9a314f7db98c622419511903f3f24252, type: 2}
   txt_stopExit: {fileID: 1919728576}
   btn_stop: {fileID: 1150326488}
   btn_play: {fileID: 1189608281}
@@ -176,7 +178,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &37480479
 GameObject:
@@ -429,7 +431,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 545801880}
-  m_RootOrder: 7
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &117595701
 SphereCollider:
@@ -996,7 +998,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 9a314f7db98c622419511903f3f24252, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1148,15 +1150,15 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1028495132}
-  - {fileID: 918429962}
-  - {fileID: 216524851}
-  - {fileID: 1693384105}
-  - {fileID: 843856242}
-  - {fileID: 166376502}
-  - {fileID: 1197389558}
   - {fileID: 117595700}
+  - {fileID: 216524851}
+  - {fileID: 843856242}
+  - {fileID: 1693384105}
+  - {fileID: 166376502}
+  - {fileID: 918429962}
+  - {fileID: 1197389558}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &707935338
 GameObject:
@@ -1263,7 +1265,6 @@ GameObject:
   - component: {fileID: 822960119}
   - component: {fileID: 822960120}
   - component: {fileID: 822960122}
-  - component: {fileID: 822960121}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1285,7 +1286,7 @@ Transform:
   m_Children:
   - {fileID: 232706675}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &822960120
 MonoBehaviour:
@@ -1304,22 +1305,6 @@ MonoBehaviour:
   rotateSpeed: 1
   rotateSize: 40
   warmUpTime: 0.5
---- !u!54 &822960121
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 822960117}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!65 &822960122
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1365,7 +1350,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 545801880}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &843856243
 SphereCollider:
@@ -1539,7 +1524,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 545801880}
-  m_RootOrder: 1
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &918429963
 SphereCollider:
@@ -2014,7 +1999,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 545801880}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &1197389559
 SphereCollider:
@@ -2273,7 +2258,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1577719663
 GameObject:
@@ -2480,7 +2465,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 545801880}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &1693384106
 SphereCollider:
@@ -3192,7 +3177,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2115932005
 MonoBehaviour:
@@ -3208,13 +3193,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnPoint:
   - {fileID: 1028495132}
-  - {fileID: 918429962}
-  - {fileID: 216524851}
-  - {fileID: 1693384105}
-  - {fileID: 843856242}
-  - {fileID: 166376502}
-  - {fileID: 1197389558}
   - {fileID: 117595700}
+  - {fileID: 216524851}
+  - {fileID: 843856242}
+  - {fileID: 1693384105}
+  - {fileID: 166376502}
+  - {fileID: 918429962}
+  - {fileID: 1197389558}
   Obstacles:
   - {fileID: 6398857465617556560, guid: eedb2f3a3825476448a709efee7db551, type: 3}
 --- !u!1 &2118433471
