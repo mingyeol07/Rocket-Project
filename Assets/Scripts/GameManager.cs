@@ -5,24 +5,26 @@ using Unity.Android.Types;
 using UnityEngine;
 using UnityEngine.UI;
 
-// 점수, 부활, 게임오버, 게임스타트, 게임시간
+// 점수, 부활, 게임오버, 게임스타트, 게임시간, 부스트
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    public bool boosting;
-    private bool isStop;
-    public bool isLife; // 부활할건지 물어보는 중일때 true
-    private bool isOver;
-
     [SerializeField] private TMP_Text txt_distance;
     [SerializeField] private GameObject player;
     [SerializeField] private Material playerMaterial;
+
+    [Header("Boost")]
+    public bool boosting;
+    [SerializeField] private Image img_boostGauge;
+    [SerializeField] private float maxboostGauge;
+    private float boostGauge;
 
     [Header("Stop")]
     [SerializeField] private TMP_Text txt_stopExit;
     [SerializeField] private Button btn_stop;
     [SerializeField] private Button btn_play;
     [SerializeField] private GameObject pnl_stop;
+    private bool isStop;
 
     [Header("GameOver")]
     [SerializeField] private GameObject pnl_life;
@@ -30,6 +32,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Button btn_life;
     [SerializeField] private GameObject pnl_gameover;
     private float lifeTime;
+    public bool isLife; // 부활할건지 물어보는 중일때 true
+    private bool isOver;
 
     private float travelDistance = 0;
 
@@ -49,7 +53,10 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         if (isStop) Time.timeScale = 0f;
-        else if (boosting) Time.timeScale = 2f;
+        else if (boosting)
+        {
+            Time.timeScale = 2f;
+        }
         else Time.timeScale = 1f;
 
         if(!isStop && !isOver) travelDistance += Time.deltaTime * 10;

@@ -152,11 +152,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c53bf9f6db3ea3e429b98e6efff41caa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boosting: 0
-  isLife: 0
   txt_distance: {fileID: 1676265262}
   player: {fileID: 822960117}
   playerMaterial: {fileID: 2100000, guid: 9a314f7db98c622419511903f3f24252, type: 2}
+  boosting: 0
+  img_boostGauge: {fileID: 0}
+  maxboostGauge: 0
   txt_stopExit: {fileID: 1919728576}
   btn_stop: {fileID: 1150326488}
   btn_play: {fileID: 1189608281}
@@ -165,6 +166,7 @@ MonoBehaviour:
   txt_lifeTime: {fileID: 219527356}
   btn_life: {fileID: 2086925988}
   pnl_gameover: {fileID: 1577719663}
+  isLife: 0
 --- !u!4 &21420032
 Transform:
   m_ObjectHideFlags: 0
@@ -1302,9 +1304,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 232706671}
   center: {fileID: 545801880}
+  warmUpTime: 0.5
   rotateSpeed: 1
   rotateSize: 40
-  warmUpTime: 0.5
 --- !u!65 &822960122
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3344,6 +3346,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5539553279511207473, guid: b639aed4cc81ce3488e7043af4688ddb, type: 3}
+      propertyPath: startDelay.scalar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5539553279511207473, guid: b639aed4cc81ce3488e7043af4688ddb, type: 3}
+      propertyPath: InitialModule.maxNumParticles
+      value: 5000
+      objectReference: {fileID: 0}
+    - target: {fileID: 5539553279511207473, guid: b639aed4cc81ce3488e7043af4688ddb, type: 3}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.scalar
+      value: 500
+      objectReference: {fileID: 0}
     - target: {fileID: 5539553279511207475, guid: b639aed4cc81ce3488e7043af4688ddb, type: 3}
       propertyPath: m_Name
       value: Particle System

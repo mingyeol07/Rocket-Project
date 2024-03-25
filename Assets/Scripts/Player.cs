@@ -11,12 +11,14 @@ public class Player : MonoBehaviour
 
     [Header("Bool")]
     private bool isDragging = false;
+
+    [Header("Boost")]
+    [SerializeField] private float warmUpTime = 1f;
     private bool isBoost = false;
 
     [Header("Float")]
     [SerializeField] private float rotateSpeed = 1f;
     [SerializeField] private float rotateSize = 40f;
-    [SerializeField] private float warmUpTime = 1f;
     private float speed;
 
     void Update()
@@ -56,7 +58,6 @@ public class Player : MonoBehaviour
         {
             player.transform.DORotate(Vector3.zero, rotateSpeed);
             if (isBoost == false) {
-                isBoost = true;
                 StartCoroutine(StartBoost());
             }
         }
@@ -90,7 +91,7 @@ public class Player : MonoBehaviour
             yield return null;
         }
 
-        if (timer >= warmUpTime)
+        if (timer >= warmUpTimer)
         {
             Booster(true);
         }
