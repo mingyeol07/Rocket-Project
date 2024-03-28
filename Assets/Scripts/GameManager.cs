@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     public bool boosting;
     [SerializeField] private Image img_boostGauge;
     [SerializeField] private float maxboostGauge;
-    private float boostGauge;
+    public float currentBoostGauge;
 
     [Header("Stop")]
     [SerializeField] private TMP_Text txt_stopExit;
@@ -46,8 +46,10 @@ public class GameManager : MonoBehaviour
     {
         btn_stop.onClick.AddListener(() => Stop());
         btn_play.onClick.AddListener(() => Stop());
-        btn_life.onClick .AddListener(() => StartCoroutine("GetLife"));
+        btn_life.onClick.AddListener(() => StartCoroutine("GetLife"));
         player.SetActive(true);
+        currentBoostGauge = maxboostGauge;
+        playerMaterial.color = Color.white;
     }
 
     private void Update()
@@ -55,12 +57,29 @@ public class GameManager : MonoBehaviour
         if (isStop) Time.timeScale = 0f;
         else if (boosting)
         {
-            Time.timeScale = 2f;
+            if(currentBoostGauge <= 0)
+            {
+                boosting = false;
+            }
+            else
+            {
+                currentBoostGauge -= Time.unscaledDeltaTime;
+                if (currentBoostGauge < 0) currentBoostGauge = 0;
+                img_boostGauge.fillAmount = currentBoostGauge / maxboostGauge;
+                Time.timeScale = 2f;
+            }
         }
         else Time.timeScale = 1f;
 
         if(!isStop && !isOver) travelDistance += Time.deltaTime * 10;
         txt_distance.text = ((int)travelDistance).ToString() + "km";
+    }
+
+    public void GetGas()
+    {
+        currentBoostGauge += 1;
+        if (currentBoostGauge > 5) currentBoostGauge = 5;
+        img_boostGauge.fillAmount = currentBoostGauge / maxboostGauge;
     }
 
     private void Stop()

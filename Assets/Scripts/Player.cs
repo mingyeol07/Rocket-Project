@@ -2,6 +2,7 @@ using UnityEngine;
 using DG.Tweening;
 using System.Collections;
 using System.Runtime.CompilerServices;
+using Unity.VisualScripting;
 
 public class Player : MonoBehaviour
 {
@@ -107,7 +108,7 @@ public class Player : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Obstacle") && !GameManager.instance.isLife)
         {
-            if (!isBoost)
+            if (!GameManager.instance.boosting)
             {
                 GameManager.instance.StartCoroutine("GameOver");
                 gameObject.SetActive(false);
@@ -116,6 +117,11 @@ public class Player : MonoBehaviour
             {
                 other.GetComponent<Obstacle>().EscapeAnim();
             }
+        }
+        else if (other.gameObject.CompareTag("Gas") && !GameManager.instance.isLife)
+        {
+            GameManager.instance.StartCoroutine("GetGas");
+            Destroy(other.gameObject);
         }
     }
 }

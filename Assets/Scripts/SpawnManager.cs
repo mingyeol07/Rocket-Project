@@ -40,7 +40,7 @@ public class SpawnManager : MonoBehaviour
 
         for (int index = 0; index < pattern.Length; index++)
         {
-            InstantiateObstacle(0, pattern[index]);
+            InstantiateObstacle(UnityEngine.Random.Range(0, obstacles.Length), pattern[index]);
             yield return new WaitForSeconds(0.1f);
         }
 
