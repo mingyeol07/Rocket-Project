@@ -89,7 +89,6 @@ public class GameManager : MonoBehaviour
         while (time > 0)
         {
             txt_stopExit.text = time.ToString();
-            txt_stopExit.gameObject.GetComponent<Animator>().SetTrigger("Shot");
             yield return new WaitForSecondsRealtime(1f);
             time -= 1;
         }

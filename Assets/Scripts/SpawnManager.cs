@@ -1,59 +1,77 @@
+using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-    [SerializeField] private Transform[] spawnPoint = null; // new Transform[8]
-    [SerializeField] private GameObject[] Obstacles;
+    [SerializeField] private Transform[] spawnPoint = null;
+    [SerializeField] private GameObject[] obstacles;
 
     private void Start()
     {
-        InvokeRepeating("RandomSpawn", 0f, 0.1f);
+        RandomSpawn();
     }
 
     public void RandomSpawn()
     {
-        int randNum = Random.Range(0, 10);
+        int randNum = UnityEngine.Random.Range(0, 4); // 0부터 3까지의 랜덤한 숫자 생성
 
         if(randNum == 0)
         {
-            
+            StartCoroutine(Pattern01());
         }
-        else if( randNum == 1) { }
-        else if (randNum == 2) { }
-        else if (randNum == 3) { }
-        else if (randNum == 4) { }
-        else if (randNum == 5) { }
-
-        int randSpawnPoint = Random.Range(0, spawnPoint.Length);
-        int randObstacle = Random.Range(0, Obstacles.Length);
-
-        Instantiate(Obstacles[randObstacle], spawnPoint[randSpawnPoint]);
+        else if (randNum == 1)
+        {
+            StartCoroutine(Pattern01());
+        }
+        else if (randNum == 2)
+        {
+            StartCoroutine(Pattern01());
+        }
+        else if (randNum == 3)
+        {
+            StartCoroutine(Pattern01());
+        }
     }
 
-    private void Pattern01()
+    private IEnumerator Pattern01()
     {
-        
+        int[] pattern = { 0, 1, 2, 3, 4, 5, 6, 7 };
+
+        for (int index = 0; index < pattern.Length; index++)
+        {
+            InstantiateObstacle(0, pattern[index]);
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        RandomSpawn();
     }
 
-    private void Pattern02()
+    private IEnumerator Pattern02()
     {
+        int[] pattern = { 0, 1, 2, 3, 4, 5, 6, 7 };
 
+        for (int index = 0; index < pattern.Length; index++)
+        {
+            InstantiateObstacle(0, pattern[index]);
+            yield return new WaitForSeconds(0.1f);
+        }
     }
 
-    private void Pattern03()
+    private IEnumerator Pattern03()
     {
+        int[] pattern = { 0, 1, 2, 3, 4, 5, 6, 7 };
 
+        for (int index = 0; index < pattern.Length; index++)
+        {
+            InstantiateObstacle(0, pattern[index]);
+            yield return new WaitForSeconds(0.1f);
+        }
     }
 
-    private void Pattern04()
+    private void InstantiateObstacle(int obstacleIndex, int spawnIndex)
     {
-
+        Instantiate(obstacles[obstacleIndex], spawnPoint[spawnIndex]);
     }
 
-    private void Pattern05()
-    {
-
-    }
 }
