@@ -9,9 +9,12 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+    [SerializeField] private SpawnManager spawnManager;
     [SerializeField] private TMP_Text txt_distance;
     [SerializeField] private GameObject player;
     [SerializeField] private Material playerMaterial;
+    public bool isGame;
+    [SerializeField] private ParticleSystem star;
 
     [Header("Boost")]
     public bool boosting;
@@ -47,9 +50,18 @@ public class GameManager : MonoBehaviour
         btn_stop.onClick.AddListener(() => Stop());
         btn_play.onClick.AddListener(() => Stop());
         btn_life.onClick.AddListener(() => StartCoroutine("GetLife"));
+      //  star.main.simulationSpeed
+    }
+
+    public void GameStart()
+    {
         player.SetActive(true);
-        currentBoostGauge = maxboostGauge;
         playerMaterial.color = Color.white;
+        currentBoostGauge = 1;
+        img_boostGauge.fillAmount = currentBoostGauge / maxboostGauge;
+        isGame = true;
+        spawnManager.RandomSpawn();
+        star.Play();
     }
 
     private void Update()

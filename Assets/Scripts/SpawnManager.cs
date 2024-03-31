@@ -7,11 +7,6 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] private Transform[] spawnPoint = null;
     [SerializeField] private GameObject[] obstacles;
 
-    private void Start()
-    {
-        RandomSpawn();
-    }
-
     public void RandomSpawn()
     {
         int randNum = UnityEngine.Random.Range(0, 4); // 0부터 3까지의 랜덤한 숫자 생성
