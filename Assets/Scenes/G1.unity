@@ -9875,7 +9875,6 @@ MonoBehaviour:
   - {fileID: 1197389558}
   obstacles:
   - {fileID: 6398857465617556560, guid: eedb2f3a3825476448a709efee7db551, type: 3}
-  - {fileID: 6398857465617556560, guid: d7ccbb084a036ec4bad72c176602b8f6, type: 3}
 --- !u!1 &2118433471
 GameObject:
   m_ObjectHideFlags: 0

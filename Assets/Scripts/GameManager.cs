@@ -55,12 +55,13 @@ public class GameManager : MonoBehaviour
 
     public void GameStart()
     {
+        isGame = true;
         player.SetActive(true);
         playerMaterial.color = Color.white;
         currentBoostGauge = 1;
         img_boostGauge.fillAmount = currentBoostGauge / maxboostGauge;
-        isGame = true;
-        spawnManager.RandomSpawn();
+        
+        spawnManager.StartCoroutine("RandomSpawn");
         star.Play();
     }
 
