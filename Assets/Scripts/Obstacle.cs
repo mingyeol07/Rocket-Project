@@ -9,7 +9,7 @@ public class Obstacle : MonoBehaviour
 
     private void Start()
     {
-        Destroy(gameObject, 10f);
+        StartCoroutine(Reset());
     }
 
     private void Update()
@@ -22,5 +22,11 @@ public class Obstacle : MonoBehaviour
     {
         float deg = Random.Range(0, 180);
         transform.eulerAngles = new Vector3(deg, 90, 0);
+    }
+
+    private IEnumerator Reset()
+    {
+        yield return new WaitForSeconds(10f);
+        SpawnManager.instance.ResetForPool(this);
     }
 }
