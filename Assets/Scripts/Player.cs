@@ -39,8 +39,6 @@ public class Player : MonoBehaviour
                 isDragging = false;
             }
 
-            center.transform.Rotate(new Vector3(0, 0, speed * Time.deltaTime * 100f));
-
             if (isDragging)
             {
                 if (touch.position.x > Screen.width / 2)
@@ -53,6 +51,7 @@ public class Player : MonoBehaviour
                     TurnLeft();
                     speed = -rotateSpeed;
                 }
+                center.transform.Rotate(new Vector3(0, 0, speed * Time.deltaTime * 100f));
             }
         }
         else if (Input.touchCount == 2)

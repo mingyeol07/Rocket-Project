@@ -149,30 +149,27 @@ public class GameManager : MonoBehaviour
         pnl_life.SetActive(false);
     }
 
-    private IEnumerator GetLife()
+    private IEnumerator PlayerGetLifeFade()
     {
         if (isOver)
         {
-            isLife = true;
-            isOver = false;
-            pnl_life.SetActive(false);
-            player.SetActive(true);
+            GetLife();
 
             float timer = 0f;
             float time = 0f;
             float changeSpeed = 3f;
+            bool changeFlag = false;
             Color color = playerMaterial.color;
-            bool change = false;
 
             while (true)
             {
-                if (change)
+                if (changeFlag)
                 {
                     timer -= 1;
 
                     if (timer <= 0)
                     {
-                        change = false;
+                        changeFlag = false;
                     }
                 }
                 else
@@ -181,7 +178,7 @@ public class GameManager : MonoBehaviour
 
                     if (timer >= changeSpeed)
                     {
-                        change = true;
+                        changeFlag = true;
                     }
                 }
 
@@ -198,5 +195,13 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void GetLife()
+    {
+        isLife = true;
+        isOver = false;
+        pnl_life.SetActive(false);
+        player.SetActive(true);
     }
 }
