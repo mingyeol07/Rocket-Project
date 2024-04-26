@@ -3,11 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Animations;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class TitleManager : MonoBehaviour
 {
-    [SerializeField] private Button btn_play;
+    public static TitleManager Instance;
+
+    [SerializeField] private Transform pos_Lever;
     [SerializeField] private Button btn_skin;
     [SerializeField] private Button btn_setting;
 
@@ -15,9 +18,13 @@ public class TitleManager : MonoBehaviour
     [SerializeField] private Transform pos_mainCam;
     [SerializeField] private Transform pos_player;
 
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     private void Start()
     {
-        btn_play.onClick.AddListener(() => OnPlayButtonClicked());
         btn_skin.onClick.AddListener(() => OnSkinButtonClicked());
         btn_setting.onClick.AddListener(() => OnMapButtonClicked());
     }
@@ -27,14 +34,9 @@ public class TitleManager : MonoBehaviour
         
     }
 
-    private void OnPlayButtonClicked()
+    public void OnGameStartLever()
     {
-        Sequence mySequence = DOTween.Sequence();
-        mySequence.Append(pos_mainCam.transform.DOMove(new Vector3(0, 9, -6.5f), 2));
-        mySequence.Join(pos_mainCam.transform.DORotate(new Vector3(10, 0, 0), 1));
-        mySequence.Append(pos_player.DOMoveZ(0, 2));
-
-        mySequence.Play();
+        Debug.Log("dd");
     }
 
     private void OnSkinButtonClicked()
