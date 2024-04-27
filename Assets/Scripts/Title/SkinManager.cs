@@ -5,7 +5,7 @@ namespace Title {
     public class SkinManager : MonoBehaviour
     {
         [SerializeField] private Transform skinsParentTransform;
-        private int[] skinPositionX = { 0, 3, 6, 9 };
+        private int[] skinPositionX = { 0, 5, 10, 15 };
         private int currentSkinID = 0;
         private const float duration = 0.5f;
 
