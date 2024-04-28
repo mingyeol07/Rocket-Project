@@ -27,6 +27,5 @@ public class Obstacle : MonoBehaviour
     private IEnumerator Reset()
     {
         yield return new WaitForSeconds(10f);
-        SpawnManager.instance.ResetForPool(this);
     }
 }

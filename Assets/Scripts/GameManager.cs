@@ -9,7 +9,6 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    [SerializeField] private SpawnManager spawnManager;
     [SerializeField] private TMP_Text txt_distance;
     [SerializeField] private GameObject player;
     [SerializeField] private Material playerMaterial;
@@ -60,8 +59,7 @@ public class GameManager : MonoBehaviour
         playerMaterial.color = Color.white;
         currentBoostGauge = 1;
         img_boostGauge.fillAmount = currentBoostGauge / maxboostGauge;
-        
-        spawnManager.StartCoroutine("RandomSpawn");
+       
         star.Play();
     }
 
