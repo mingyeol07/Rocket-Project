@@ -23,7 +23,7 @@ namespace Title {
 
         public void SkinSelect()
         {
-            UserInfo.Instance.MapID = currentSkinID;
+            UserInfo.Instance.StageID = currentSkinID;
         }
     }
 }

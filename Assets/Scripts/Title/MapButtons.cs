@@ -25,7 +25,7 @@ namespace Title {
 
             }
 
-            UserInfo.Instance.MapID = (int)buttonName;
+            UserInfo.Instance.StageID = (int)buttonName;
             TitleManager.Instance.OnMapExitButtonClicked();
         }
     }

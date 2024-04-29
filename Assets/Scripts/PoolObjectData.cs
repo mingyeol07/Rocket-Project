@@ -1,9 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public enum ObstacleKeyType { Nomal, Move, Split, Fast, Slow, Transparent }
 
+[System.Serializable]
 public class PoolObjectData
 {
     public const int INITIAL_COUNT = 10; // 초기 생성 크기

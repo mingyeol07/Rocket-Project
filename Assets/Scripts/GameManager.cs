@@ -9,6 +9,9 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+
+
+    public MeshRenderer backGround;
     [SerializeField] private TMP_Text txt_distance;
     [SerializeField] private GameObject player;
     [SerializeField] private Material playerMaterial;

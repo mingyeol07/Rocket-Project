@@ -18,5 +18,5 @@ public class UserInfo : MonoBehaviour
     }
 
     public int SKinID;
-    public int MapID;
+    public int StageID;
 }

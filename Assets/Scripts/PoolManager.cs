@@ -7,8 +7,6 @@ public class PoolManager : MonoBehaviour
 {
     public static PoolManager Instance; // 싱글톤
 
-    [SerializeField] private List<PoolObjectData> poolObjectDataList = new List<PoolObjectData>(); // 인스펙터에서 조정해주는 데이터리스트
-
     private Dictionary<ObstacleKeyType, PoolObjectData> dataDict; // 데이터들을 저장하는 딕셔너리
     private Dictionary<ObstacleKeyType, GameObject> obstacleDict; // 데이터 안의 prefab들(원본)을  저장하는 딕셔너리
     private Dictionary<ObstacleKeyType, Stack<GameObject>> poolDict; // 풀들을 저장하는 딕셔너리

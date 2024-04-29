@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
 
     [Header("Boost")]
     [SerializeField] private float warmUpTime = 1f;
-    private bool isBoost = false;
+   [SerializeField] private bool isBoost = false;
 
     [Header("Float")]
     [SerializeField] private float rotateSpeed = 1f;
