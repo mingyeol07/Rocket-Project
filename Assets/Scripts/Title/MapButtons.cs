@@ -3,29 +3,29 @@ namespace Title {
 
     public class MapButtons : MonoBehaviour
     {
-        private enum ButtonName { Planet0, Planet1, Planet2, Planet3 }
-        [SerializeField] private ButtonName buttonName;
+        [SerializeField] private int stageNumber;
 
         private void OnMouseUp()
         {
-            if (buttonName == ButtonName.Planet0)
-            {
-                
-            }
-            else if (buttonName == ButtonName.Planet1)
-            {
+            switch (stageNumber) {
+                case 0:
 
-            }
-            else if (buttonName == ButtonName.Planet2)
-            {
+                    break;
+                case 1:
 
-            }
-            else if (buttonName == ButtonName.Planet3)
-            {
+                    break;
+                case 2:
 
+                    break;
+                case 3:
+
+                    break;
+                default:
+
+                    break;
             }
 
-            UserInfo.Instance.StageID = (int)buttonName;
+            UserInfo.Instance.StageID = stageNumber;
             TitleManager.Instance.OnMapExitButtonClicked();
         }
     }

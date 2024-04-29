@@ -1280,7 +1280,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35cac624547bc2c4fba4384f2b36fa99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonName: 3
+  stageNumber: 0
 --- !u!1 &571803879
 GameObject:
   m_ObjectHideFlags: 0
@@ -1641,31 +1641,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4545944453041214, guid: 81da38808ac3c25439afa7357d568c17, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.59872615
       objectReference: {fileID: 0}
     - target: {fileID: 4545944453041214, guid: 81da38808ac3c25439afa7357d568c17, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0.53139293
       objectReference: {fileID: 0}
     - target: {fileID: 4545944453041214, guid: 81da38808ac3c25439afa7357d568c17, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: -0.44296697
       objectReference: {fileID: 0}
     - target: {fileID: 4545944453041214, guid: 81da38808ac3c25439afa7357d568c17, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0.4036445
       objectReference: {fileID: 0}
     - target: {fileID: 4545944453041214, guid: 81da38808ac3c25439afa7357d568c17, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: 83.679
       objectReference: {fileID: 0}
     - target: {fileID: 4545944453041214, guid: 81da38808ac3c25439afa7357d568c17, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -67.123
       objectReference: {fileID: 0}
     - target: {fileID: 4545944453041214, guid: 81da38808ac3c25439afa7357d568c17, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 6.553
       objectReference: {fileID: 0}
     - target: {fileID: 4545944453041214, guid: 81da38808ac3c25439afa7357d568c17, type: 3}
       propertyPath: m_ConstrainProportionsScale
@@ -2025,7 +2025,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SKinID: 0
-  MapID: 0
+  StageID: 0
 --- !u!4 &1134338974
 Transform:
   m_ObjectHideFlags: 0
@@ -2204,7 +2204,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35cac624547bc2c4fba4384f2b36fa99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonName: 1
+  stageNumber: 0
 --- !u!1001 &1436075002
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4513,7 +4513,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35cac624547bc2c4fba4384f2b36fa99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonName: 2
+  stageNumber: 0
 --- !u!1 &2147067991 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1716595174833696, guid: 3020a195461dcdb4596ae75cc78800fd, type: 3}
@@ -4536,4 +4536,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35cac624547bc2c4fba4384f2b36fa99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonName: 0
+  stageNumber: 0

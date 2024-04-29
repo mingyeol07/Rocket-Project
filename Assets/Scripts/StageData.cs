@@ -5,6 +5,8 @@ using UnityEngine;
 [System.Serializable]
 public class StageData
 {
+    public string stageName;
+
     public PoolObjectData[] obstacles;
     public Material backGround;
 }

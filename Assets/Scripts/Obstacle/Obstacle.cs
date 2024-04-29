@@ -21,11 +21,12 @@ public class Obstacle : MonoBehaviour
     public void EscapeAnim()
     {
         float deg = Random.Range(0, 180);
-        transform.eulerAngles = new Vector3(deg, 90, 0);
+        transform.eulerAngles = new Vector3(deg, 90, transform.rotation.z);
     }
 
     private IEnumerator Reset()
     {
         yield return new WaitForSeconds(10f);
+        PoolManager.Instance.DeSpawn(gameObject);
     }
 }
