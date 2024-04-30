@@ -11,11 +11,11 @@ public class Obstacle : MonoBehaviour
     private void Start()
     {
         StartCoroutine(Reset());
+        speed = Mathf.Clamp(speed, minSpeed, 100f);
     }
 
     private void Update()
     {
-        speed = Mathf.Clamp(speed, minSpeed, 100f);
         transform.position += -transform.forward * speed * Time.deltaTime;
     }
 

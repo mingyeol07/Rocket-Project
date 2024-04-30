@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     [SerializeField] private Transform[] spawnPoints;
-    private float spawnTick = 0.5f;
+    [SerializeField] private float spawnTick = 0.5f;
     private StageData nowStage;
 
     private void Start()

@@ -6251,7 +6251,7 @@ MonoBehaviour:
   center: {fileID: 545801880}
   warmUpTime: 0.5
   isBoost: 0
-  rotateSpeed: 100
+  rotateSpeed: 200
   rotateSize: 40
 --- !u!65 &822960122
 BoxCollider:
@@ -8449,6 +8449,7 @@ MonoBehaviour:
   - {fileID: 166376502}
   - {fileID: 918429962}
   - {fileID: 1197389558}
+  spawnTick: 0.1
 --- !u!1 &2118433471
 GameObject:
   m_ObjectHideFlags: 0
