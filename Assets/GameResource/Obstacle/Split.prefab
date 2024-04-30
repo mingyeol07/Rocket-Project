@@ -13,10 +13,10 @@ GameObject:
   - component: {fileID: 8945067756992970492}
   - component: {fileID: 9048770189642069574}
   - component: {fileID: 9048770189642069568}
-  - component: {fileID: 9048770189642069569}
+  - component: {fileID: -111440610706243968}
   m_Layer: 0
   m_Name: Split
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8968734082083109808}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -112.45}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.06, y: 0.06, z: 0.06}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -115,7 +115,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &9048770189642069569
+--- !u!114 &-111440610706243968
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -124,7 +124,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 8968734082083109808}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e91c26dd74cdde40a5c869d63ce3485, type: 3}
+  m_Script: {fileID: 11500000, guid: bd3eccca0843a664c9a378a3f3df3bab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minSpeed: 0
+  minSpeed: 75
+  destroyWaitTime: 8

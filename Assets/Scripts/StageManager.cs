@@ -12,7 +12,8 @@ public class StageManager : MonoBehaviour
 
     private void Awake()
     {
-        stageIndex = UserInfo.Instance.StageID; // UserInfo에서 stageId를 받아옴
+        //stageIndex = UserInfo.Instance.StageID; // UserInfo에서 stageId를 받아옴
+        stageIndex = 3;
     }
 
     private void Start()
@@ -28,7 +29,7 @@ public class StageManager : MonoBehaviour
 
         for (int i = 0; i < stageDatas[stageIndex].obstacles.Length; i++)
         {
-            stageObstacles.Add(stageObstacles[i]);
+            stageObstacles.Add(stageDatas[stageIndex].obstacles[i]);
         }
 
         return stageObstacles;

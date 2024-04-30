@@ -5,6 +5,7 @@ using UnityEngine;
 public class Obstacle : MonoBehaviour
 {
     [SerializeField] private float minSpeed;
+    [SerializeField] private int destroyWaitTime;
     private float speed;
 
     private void Start()
@@ -26,7 +27,7 @@ public class Obstacle : MonoBehaviour
 
     private IEnumerator Reset()
     {
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(destroyWaitTime);
         PoolManager.Instance.DeSpawn(gameObject);
     }
 }

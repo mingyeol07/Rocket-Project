@@ -43,12 +43,15 @@ public class PoolManager : MonoBehaviour
         // prefab을 인스턴스화하다
         GameObject obstacle = Instantiate(objectData.prefab);
         obstacle.name = objectData.prefab.name;
+        obstacle.transform.parent = transform;
         obstacle.SetActive(false); // 인스턴스 비활성화
 
         Stack<GameObject> objectPool = new Stack<GameObject>(objectData.initialCount); // 초기 생성값만큼 stack을 만들기
         for (int i =0; i < objectData.initialCount; i++) // 초기 생성값 만큼 stack안에 clone 넣기 반복
         {
             GameObject clone = Instantiate(objectData.prefab); // 가독성을 위해 clone 변수 생성
+            clone.transform.parent = obstacle.transform;
+            clone.SetActive(false);
 
             objectPool.Push(clone);
             clonePoolDict.Add(clone, objectPool);
@@ -68,6 +71,7 @@ public class PoolManager : MonoBehaviour
 
     public GameObject Spawn(ObstacleKeyType keyType, Transform parent)
     {
+        Debug.Log("dd");
         if (!poolDict.TryGetValue(keyType, out var pool)) return null;
 
         GameObject go;
@@ -83,6 +87,8 @@ public class PoolManager : MonoBehaviour
 
         go.SetActive(true);
         go.transform.SetParent(parent);
+        go.transform.position = parent.position;
+        go.transform.rotation = parent.rotation;
 
         return go;
     }
