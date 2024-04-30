@@ -159,7 +159,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -500, y: -300}
+  m_AnchoredPosition: {x: 70, y: -300}
   m_SizeDelta: {x: 200, y: 1000}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &8641409
@@ -6251,7 +6251,7 @@ MonoBehaviour:
   center: {fileID: 545801880}
   warmUpTime: 0.5
   isBoost: 0
-  rotateSpeed: 200
+  rotateSpeed: 150
   rotateSize: 40
 --- !u!65 &822960122
 BoxCollider:
@@ -6731,7 +6731,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -30, y: 500}
+  m_AnchoredPosition: {x: -30, y: -47}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &1150326488
@@ -7416,7 +7416,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 30, y: 500}
+  m_AnchoredPosition: {x: 30, y: -48}
   m_SizeDelta: {x: 1500, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1676265262
@@ -8449,7 +8449,7 @@ MonoBehaviour:
   - {fileID: 166376502}
   - {fileID: 918429962}
   - {fileID: 1197389558}
-  spawnTick: 0.1
+  spawnTick: 0.2
 --- !u!1 &2118433471
 GameObject:
   m_ObjectHideFlags: 0
