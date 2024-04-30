@@ -51,19 +51,19 @@ public class Player : MonoBehaviour
                     TurnLeft();
                     speed = -rotateSpeed;
                 }
-                center.transform.Rotate(new Vector3(0, 0, speed * Time.deltaTime * 100f));
+                center.transform.Rotate(new Vector3(0, 0, speed * Time.deltaTime));
             }
         }
         else if (Input.touchCount == 2)
         {
-            player.transform.DORotate(Vector3.zero, rotateSpeed);
+            player.transform.DORotate(Vector3.zero, 1);
             if (isBoost == false) {
                 StartCoroutine(StartBoost());
             }
         }
         else
         { 
-            player.transform.DORotate(Vector3.zero, rotateSpeed);
+            player.transform.DORotate(Vector3.zero, 1);
             speed = 0;
             isDragging = false;
             Booster(false);

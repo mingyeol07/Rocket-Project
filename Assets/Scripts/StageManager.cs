@@ -13,7 +13,7 @@ public class StageManager : MonoBehaviour
     private void Awake()
     {
         //stageIndex = UserInfo.Instance.StageID; // UserInfo에서 stageId를 받아옴
-        stageIndex = 3;
+        stageIndex = 1;
     }
 
     private void Start()
