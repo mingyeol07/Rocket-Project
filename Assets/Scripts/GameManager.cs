@@ -51,7 +51,8 @@ public class GameManager : MonoBehaviour
     {
         btn_stop.onClick.AddListener(() => Stop());
         btn_play.onClick.AddListener(() => Stop());
-        btn_life.onClick.AddListener(() => StartCoroutine("GetLife"));
+        btn_life.onClick.AddListener(() => StartCoroutine(PlayerGetLifeFade()));
+        GameStart();
       //  star.main.simulationSpeed
     }
 
