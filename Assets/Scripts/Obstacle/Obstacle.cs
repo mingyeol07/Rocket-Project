@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class Obstacle : MonoBehaviour
 {
-    [SerializeField] private float minSpeed;
+    [SerializeField] protected float minSpeed;
     [SerializeField] private int destroyWaitTime;
     private float speed;
 
-    private void Start()
+    protected virtual void Start()
     {
-        StartCoroutine(Reset());
+        StartCoroutine(Despawn());
         speed = Mathf.Clamp(speed, minSpeed, 100f);
     }
 
@@ -25,7 +25,7 @@ public class Obstacle : MonoBehaviour
         transform.eulerAngles = new Vector3(deg, 90, transform.rotation.z);
     }
 
-    private IEnumerator Reset()
+    private IEnumerator Despawn()
     {
         yield return new WaitForSeconds(destroyWaitTime);
         PoolManager.Instance.DeSpawn(gameObject);

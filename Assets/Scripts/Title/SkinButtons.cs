@@ -9,17 +9,20 @@ namespace Title
 
         private void OnMouseUp()
         {
-            if(buttonName == ButtonName.Left)
+            if(!TitleManager.Instance.IsClicked())
             {
-                TitleManager.Instance.skinManager.SkinChangeLeft();
-            }
-            else if (buttonName == ButtonName.Right)
-            {
-                TitleManager.Instance.skinManager.SkinChangeRight();
-            }
-            else if (buttonName == ButtonName.Check)
-            {
-                TitleManager.Instance.OnSkinExitButtonClicked();
+                if (buttonName == ButtonName.Left)
+                {
+                    TitleManager.Instance.skinManager.SkinChangeLeft();
+                }
+                else if (buttonName == ButtonName.Right)
+                {
+                    TitleManager.Instance.skinManager.SkinChangeRight();
+                }
+                else if (buttonName == ButtonName.Check)
+                {
+                    TitleManager.Instance.OnSkinExitButtonClicked();
+                }
             }
         }
     }

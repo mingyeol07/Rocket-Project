@@ -8,12 +8,11 @@ public class StageManager : MonoBehaviour
 {
     [SerializeField] private List<StageData> stageDatas = new List<StageData>(); // StageData
     [SerializeField] private SpawnManager spawnManager;
-    private int stageIndex;
+    [SerializeField] private int stageIndex;
 
     private void Awake()
     {
         //stageIndex = UserInfo.Instance.StageID; // UserInfo에서 stageId를 받아옴
-        stageIndex = 1;
     }
 
     private void Start()

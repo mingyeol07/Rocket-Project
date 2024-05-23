@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4959230493836969972}
   - component: {fileID: 4999405607647491370}
   - component: {fileID: 4999405607647491371}
-  - component: {fileID: -5376105603455243436}
+  - component: {fileID: -9140301946400711537}
   m_Layer: 0
   m_Name: Fast
   m_TagString: Obstacle
@@ -115,7 +115,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &-5376105603455243436
+--- !u!114 &-9140301946400711537
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -124,7 +124,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4938078128918078998}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd3eccca0843a664c9a378a3f3df3bab, type: 3}
+  m_Script: {fileID: 11500000, guid: 2a8fdaa9406b8b34b8a31faab2136524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   minSpeed: 150

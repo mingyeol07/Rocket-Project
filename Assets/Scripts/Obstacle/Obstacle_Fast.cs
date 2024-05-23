@@ -4,15 +4,9 @@ using UnityEngine;
 
 public class Obstacle_Fast : Obstacle
 {
-    // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        minSpeed *= 2;
+        base.Start();
     }
 }

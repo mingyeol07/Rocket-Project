@@ -1,6 +1,8 @@
 namespace Title
 {
     using DG.Tweening;
+    using System.Collections;
+    using Unity.VisualScripting;
     using UnityEngine;
     using UnityEngine.UI;
 
@@ -11,6 +13,8 @@ namespace Title
         public SkinManager skinManager;
         [SerializeField] private Animator canvasAnimator;
         [SerializeField] private Animator RocketAnimator;
+        [SerializeField] private GameObject[] planetOutline;
+        private bool isClicked;
 
         // Buttons Animator
         private readonly int hashTitleButton_Enter = Animator.StringToHash("OtherTapEnter");
@@ -31,6 +35,20 @@ namespace Title
         private void Awake()
         {
             Instance = this;
+        }
+
+        public bool IsClicked()
+        {
+            if(isClicked) return true;
+            StartCoroutine(StartClick());
+            return false;
+        }
+
+        private IEnumerator StartClick()
+        {
+            isClicked = true;
+            yield return new WaitForSeconds(TapChangeDuration);
+            isClicked = false;
         }
 
         public void OnGameStartLeverUp()
@@ -75,6 +93,16 @@ namespace Title
         {
             canvasAnimator.SetTrigger(hashTitleButton_Exit);
             RocketAnimator.SetTrigger(hashRocketSmall_Exit);
+        }
+
+        public void OnPlanetOutline(int curPlanetNumber)
+        {
+            for (int i = 0; i < planetOutline.Length; i++)
+            {
+                planetOutline[i].SetActive(false);
+            }
+
+            planetOutline[curPlanetNumber].SetActive(true);
         }
     }
 }

@@ -14,7 +14,8 @@ public class GameManager : MonoBehaviour
     public MeshRenderer backGround;
     [SerializeField] private TMP_Text txt_distance;
     [SerializeField] private GameObject player;
-    [SerializeField] private Material playerMaterial;
+    [SerializeField] private MeshRenderer meshRenderer;
+    [SerializeField] private Material[] playerMaterials;
     public bool isGame;
     [SerializeField] private ParticleSystem star;
 
@@ -60,7 +61,13 @@ public class GameManager : MonoBehaviour
     {
         isGame = true;
         player.SetActive(true);
-        playerMaterial.color = Color.white;
+
+        playerMaterials = new Material[meshRenderer.materials.Length];
+        for (int i =0; i< meshRenderer.materials.Length; i++)
+        {
+            playerMaterials[i] = meshRenderer.materials[i];
+        }
+
         currentBoostGauge = 1;
         img_boostGauge.fillAmount = currentBoostGauge / maxboostGauge;
        
@@ -161,7 +168,11 @@ public class GameManager : MonoBehaviour
             float time = 0f;
             float changeSpeed = 3f;
             bool changeFlag = false;
-            Color color = playerMaterial.color;
+            Color[] colors = new Color[playerMaterials.Length] ;
+            for (int i = 0; i < playerMaterials.Length; i++)
+            {
+                colors[i] = playerMaterials[i].color;
+            }
 
             while (true)
             {
@@ -184,7 +195,10 @@ public class GameManager : MonoBehaviour
                     }
                 }
 
-                playerMaterial.color = new Color(color.r, color.g, color.b, timer / changeSpeed);
+                for (int i = 0; i < colors.Length; i++)
+                {
+                    playerMaterials[i].color = new Color(colors[i].r, colors[i].g, colors[i].b, timer / changeSpeed);
+                }
 
                 yield return new WaitForSeconds(0.1f);
                 time += 0.1f;
@@ -192,7 +206,10 @@ public class GameManager : MonoBehaviour
                 if(time > 3)
                 {
                     isLife = false;
-                    playerMaterial.color = new Color(color.r, color.g, color.b, 1);
+                    for (int i = 0; i < colors.Length; i++)
+                    {
+                        playerMaterials[i].color = new Color(colors[i].r, colors[i].g, colors[i].b, 1);
+                    }
                     yield break;
                 }
             }

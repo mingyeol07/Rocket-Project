@@ -71,7 +71,6 @@ public class PoolManager : MonoBehaviour
 
     public GameObject Spawn(ObstacleKeyType keyType, Transform parent)
     {
-        Debug.Log("dd");
         if (!poolDict.TryGetValue(keyType, out var pool)) return null;
 
         GameObject go;
