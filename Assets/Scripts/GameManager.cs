@@ -171,6 +171,7 @@ public class GameManager : MonoBehaviour
             Color[] colors = new Color[playerMaterials.Length] ;
             for (int i = 0; i < playerMaterials.Length; i++)
             {
+                playerMaterials[i].shader = Shader.Find("Legacy Shaders/Transparent/Diffuse");
                 colors[i] = playerMaterials[i].color;
             }
 
@@ -209,6 +210,7 @@ public class GameManager : MonoBehaviour
                     for (int i = 0; i < colors.Length; i++)
                     {
                         playerMaterials[i].color = new Color(colors[i].r, colors[i].g, colors[i].b, 1);
+                        playerMaterials[i].shader = Shader.Find("Standard");
                     }
                     yield break;
                 }

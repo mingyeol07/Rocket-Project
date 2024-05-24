@@ -14,12 +14,12 @@ public class Obstacle : MonoBehaviour
         speed = Mathf.Clamp(speed, minSpeed, 100f);
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         transform.position += -transform.forward * speed * Time.deltaTime;
     }
 
-    public void EscapeAnim()
+    public virtual void EscapeAnim()
     {
         float deg = Random.Range(0, 180);
         transform.eulerAngles = new Vector3(deg, 90, transform.rotation.z);

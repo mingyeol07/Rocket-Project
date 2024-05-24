@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class Obstacle_Split : Obstacle
 {
-    // Start is called before the first frame update
-    void Start()
+    private Animator animator;
+
+    protected override void Start()
     {
-        
+        base.Start();
+        animator = GetComponent<Animator>();
+        StartCoroutine(SplitStart());
     }
 
-    // Update is called once per frame
-    void Update()
+    private IEnumerator SplitStart()
     {
-        
+        yield return new WaitForSeconds(1);
+        animator.SetTrigger("Split");
     }
 }

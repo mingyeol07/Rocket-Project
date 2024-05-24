@@ -4,15 +4,22 @@ using UnityEngine;
 
 public class Obstacle_Move : Obstacle
 {
-    private Transform parent;
+    [SerializeField] private Transform child;
+    private int randomRotateVec;
+    [SerializeField] private float rotateSpeed;
 
-    void Start()
+    protected override void Start()
     {
-        parent = GetComponentInParent<Transform>();
+        base.Start();
+        randomRotateVec = (int)Mathf.Sign((float)Random.Range(-1, 1));
+        child = GetComponentInChildren<Transform>();
+        
     }
 
-    void Update()
+    protected override void Update()
     {
-        
+        base.Update();
+        transform.position = new Vector3(0, 0, transform.position.z);
+        child.eulerAngles += new Vector3(0, 0, randomRotateVec * rotateSpeed);
     }
 }

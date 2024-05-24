@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
     private bool isDragging = false;
 
     [Header("Boost")]
-    [SerializeField] private float warmUpTime = 1f;
+    [SerializeField] private float warmUpTime = 0.5f;
    [SerializeField] private bool isBoost = false;
 
     [Header("Float")]
@@ -114,7 +114,10 @@ public class Player : MonoBehaviour
             }
             else
             {
-                other.GetComponent<Obstacle>().EscapeAnim();
+                
+                if(other.GetComponent<Obstacle>() != null) other.GetComponent<Obstacle>().EscapeAnim();
+                else other.GetComponentInParent<Obstacle>().EscapeAnim();
+
             }
         }
         else if (other.gameObject.CompareTag("Gas") && !GameManager.instance.isLife)
