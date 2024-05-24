@@ -8257,7 +8257,7 @@ MonoBehaviour:
   - stageName: Stage 2
     obstacles:
     - KeyType: 1
-      prefab: {fileID: 6549829745218293524, guid: 628c8d9f63702a74e9df3ee79b69827a, type: 3}
+      prefab: {fileID: 7659552385661915026, guid: fb39d715c1dd70c408f70faf415b1388, type: 3}
       initialCount: 20
       maxCount: 50
     - KeyType: 4
@@ -8288,7 +8288,7 @@ MonoBehaviour:
       maxCount: 50
     backGround: {fileID: 2100000, guid: a1408e096e5faab4cb00cb41523a5fb8, type: 2}
   spawnManager: {fileID: 2115932005}
-  stageIndex: 3
+  stageIndex: 2
 --- !u!1 &2086925986
 GameObject:
   m_ObjectHideFlags: 0
