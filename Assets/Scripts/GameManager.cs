@@ -10,8 +10,9 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
-
-    public MeshRenderer backGround;
+    [SerializeField] private MeshRenderer backGround;
+    [SerializeField] private MeshRenderer cylinderRenderer;
+    [SerializeField] private MeshRenderer cylinderInsideRenderer;
     [SerializeField] private TMP_Text txt_distance;
     [SerializeField] private GameObject player;
     [SerializeField] private MeshRenderer meshRenderer;
@@ -37,6 +38,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TMP_Text txt_lifeTime;
     [SerializeField] private Button btn_life;
     [SerializeField] private GameObject pnl_gameover;
+    [SerializeField] private GameObject pnl_retry;
     private float lifeTime;
     public bool isLife; // 부활할건지 물어보는 중일때 true
     private bool isOver;
@@ -57,10 +59,18 @@ public class GameManager : MonoBehaviour
       //  star.main.simulationSpeed
     }
 
+    public void SetBackGround(Material cylinderMaterial, Material cylinderInsideMaterial, Material BackGroundMaterial)
+    {
+        cylinderRenderer.material = cylinderMaterial;
+        cylinderInsideRenderer.material = cylinderInsideMaterial;
+        backGround.material = BackGroundMaterial;
+    }
+
     public void GameStart()
     {
         isGame = true;
         player.SetActive(true);
+        pnl_retry.SetActive(false);
 
         playerMaterials = new Material[meshRenderer.materials.Length];
         for (int i =0; i< meshRenderer.materials.Length; i++)
@@ -76,10 +86,13 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (isStop) Time.timeScale = 0f;
+        if (isStop)
+        {
+            Time.timeScale = 0f;
+        }
         else if (boosting)
         {
-            if(currentBoostGauge <= 0)
+            if (currentBoostGauge <= 0)
             {
                 boosting = false;
             }
@@ -91,12 +104,16 @@ public class GameManager : MonoBehaviour
                 Time.timeScale = 2f;
             }
         }
-        else Time.timeScale = 1f;
+        else
+        {
+            Time.timeScale = 1f;
+            if(currentBoostGauge < maxboostGauge) currentBoostGauge += Time.deltaTime / maxboostGauge;
+            img_boostGauge.fillAmount = currentBoostGauge / maxboostGauge;
+        }
 
-        if(!isStop && !isOver) travelDistance += Time.deltaTime * 10;
-        txt_distance.text = ((int)travelDistance).ToString() + "km";
+            if (!isStop && !isOver) travelDistance += Time.deltaTime * 10;
+            txt_distance.text = string.Format("{0: #,###}", ((int)travelDistance).ToString()) + "km";
     }
-
     public void GetGas()
     {
         currentBoostGauge += 1;
@@ -153,7 +170,7 @@ public class GameManager : MonoBehaviour
             if (isLife == true) yield break;
             yield return null;
         }
-
+        pnl_retry.SetActive(true);
         isOver = false;
         pnl_life.SetActive(false);
     }

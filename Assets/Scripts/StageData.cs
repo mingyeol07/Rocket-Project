@@ -9,4 +9,6 @@ public class StageData
 
     public PoolObjectData[] obstacles;
     public Material backGround;
+    public Material CylinderMaterial;
+    public Material CylinderInsideMaterial;
 }

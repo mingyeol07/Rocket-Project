@@ -10,7 +10,7 @@ public class SpawnManager : MonoBehaviour
 
     private void Start()
     {
-        InvokeRepeating("ObstacleSpawn", spawnTick, spawnTick);
+        InvokeRepeating(nameof(ObstacleSpawn), spawnTick, spawnTick);
     }
 
     private void ObstacleSpawn()

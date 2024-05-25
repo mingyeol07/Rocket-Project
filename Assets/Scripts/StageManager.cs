@@ -8,6 +8,7 @@ public class StageManager : MonoBehaviour
 {
     [SerializeField] private List<StageData> stageDatas = new List<StageData>(); // StageData
     [SerializeField] private SpawnManager spawnManager;
+
     [SerializeField] private int stageIndex;
 
     private void Awake()
@@ -17,8 +18,11 @@ public class StageManager : MonoBehaviour
 
     private void Start()
     {
+        GameManager.instance.SetBackGround(stageDatas[stageIndex].CylinderMaterial, stageDatas[stageIndex].CylinderInsideMaterial,
+            stageDatas[stageIndex].backGround);
+
         PoolManager.Instance.Initialization(GetPoolObjects());
-        GameManager.instance.backGround.material = GetBackGroundMaterial();
+        
         spawnManager.SetStage(stageDatas[stageIndex]);
     }
 
@@ -32,10 +36,5 @@ public class StageManager : MonoBehaviour
         }
 
         return stageObstacles;
-    }
-
-    private Material GetBackGroundMaterial()
-    {
-        return stageDatas[stageIndex].backGround;
     }
 }
