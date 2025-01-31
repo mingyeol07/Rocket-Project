@@ -1,7 +1,5 @@
-using DG.Tweening;
 using System.Collections;
 using TMPro;
-using Unity.Android.Types;
 using UnityEngine;
 using UnityEngine.UI;
 
